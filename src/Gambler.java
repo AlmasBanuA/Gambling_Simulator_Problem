@@ -1,10 +1,25 @@
 
 package daygambler;
 
+
+/*
+* This problem simulates a Gambler who starts with a stake and
+* bets every game to win or loose some stake. Being a Calculative
+* Gambler exits if the Stake reaches a high or a low limit
+*/
+
+
+//import scanner class
 import java.util.Scanner;
 
-public class GamblerSimulatorUC7 {
+public class Gambler {
 
+	/*
+	* start with initializing  a stake of
+        *  $100 every day and bet
+        * $1 every game in a static variable
+	*/
+	
 	static int TOTAL_AMOUNT_DIFF_IN_MONTH = 0;
 	static int WON = 1;
 	static int LOST = 0;
@@ -13,8 +28,10 @@ public class GamblerSimulatorUC7 {
 		int maximumWon[] = new int[100];
 		int maximumLost[] = new int[100];
 		int month = 1;
-		Scanner sc = new Scanner(System.in);
+		
+		Scanner sc = new Scanner(System.in); 	// create object for scanner class
 		boolean label = true;
+		
 		while (label) {
 			System.out.println(" Month" + month + " gambling starts");
 			System.out.println("Enter starting amount of stake ");
@@ -22,11 +39,26 @@ public class GamblerSimulatorUC7 {
 			System.out.println("Enter amount to bet ");
 			int betAmount = sc.nextInt();
 			int totalAmount = 0;
+			
+			/*
+			* using for loop to check condition After 20 days of playing every day would like to
+			* know the total amount won or lost.
+			*/
+			
+			
 			for (int i = 1; i <= 20; i++) {
 				int cashInHand = amountOfStake;
 				while (cashInHand > amountOfStake / 2 && cashInHand < amountOfStake * 1.5) {
+					
+					/*
+					*  using random function to get a random number
+					*/
 					int play = (int) Math.floor(Math.random() * 10) % 2;
 					System.out.println("Gamblers play:" + play);
+					
+					/*
+					* using switch case statement for getting amount if gambler will lose or gain 
+					*/
 					switch (play) {
 					case 1:
 						cashInHand = cashInHand + betAmount;
@@ -40,9 +72,16 @@ public class GamblerSimulatorUC7 {
 						System.out.println("default");
 					}
 				}
+				
+				
+				/*
+				* Gambler if won or lost 50% of the stake, would resign for the day
+				*/
 				if (cashInHand == (amountOfStake / 2) || cashInHand == (amountOfStake * 1.5)) {
 					System.out.println("Player would like to resign for current day" + i);
 				}
+				
+				
 				if (cashInHand > amountOfStake) {
 					int amountWonPerDay = cashInHand - amountOfStake;
 					System.out.println("Player won day" + i + " RS " + amountWonPerDay);
@@ -57,6 +96,11 @@ public class GamblerSimulatorUC7 {
 				}
 				totalAmount = totalAmount + cashInHand;
 			}
+		
+			/*
+			* check luckiest day of a gambler where won maximum and  unluckiest day
+			  where lost maximum
+			*/
 			System.out.println("Luckiest days as following as gambler WON maximum amount");
 			for (int i = 1; i <= 20; i++) {
 				if (maximumWon[i] == (amountOfStake * 1.5))
@@ -81,6 +125,10 @@ public class GamblerSimulatorUC7 {
 			}
 			System.out.println();
 			if (TOTAL_AMOUNT_DIFF_IN_MONTH > 0) {
+				
+				/*
+				* If won would like to continue playing next month or stop Gambling
+				*/
 				System.out.println("Do you want to continue playing for next month");
 				System.out.println("If you want to continue playing type '1'");
 				System.out.println("if you want stop gambling type '2'");
@@ -89,7 +137,7 @@ public class GamblerSimulatorUC7 {
 					label = true;
 					month++;
 				} else {
-					label = false;
+					label = false;						
 					System.out.println("Thanks for Playing");
 				}
 			} else {
