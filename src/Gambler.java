@@ -1,37 +1,43 @@
-package workshop;
+package daygambler;
 
-public class Gambler {
+import java.util.Scanner;
 
-		    /*
-	             * UC1 here taking variables and initializing it in the int data type
-	            */
-		    public static final int INITIAL_BET_STAKE = 100;
-		    public static final int BET_AMT = 1;
+public class GamblerSimuatorUC2 {
 
-		    /*
-		    * UC2 Calling a method of gambler_SolutionUC2
-		    */
-		    public void gambler_SolutionUC2() {
+	static int AMOUNT_OF_STAKE = 100;
+	static int BET_AMOUNT = 1;
+	static int WON = 1;
+	static int LOST = 0;
 
-		        double num = Math.floor(Math.random() * 10) % 2;	/*random function using to check either win or loose*/
-			    
-		        int remg_amt = INITIAL_BET_STAKE;
-		        if (num == 0){
-		            remg_amt += BET_AMT;
-		            System.out.println("The Gambler wins the bet and he has $"
-		                    + remg_amt + " with him after one bet.");
-		        } else {
-		            remg_amt -= BET_AMT;
-				
-		            System.out.println("The Gambler loses the bet and he has $"
-		                    + remg_amt + " with him after one bet.");
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Starting amount of stake : " + AMOUNT_OF_STAKE);
+		System.out.println("Amount to bet after every play : " + BET_AMOUNT);
+		int play = (int) Math.floor(Math.random() * 10) % 2;
+		System.out.println("Gamblers play:" + play);
+		int InHandcash = AMOUNT_OF_STAKE;
+		switch (play) {
+		case 1:
+			InHandcash = InHandcash + BET_AMOUNT;
+			System.out.println("Total current cash gambler has " + InHandcash);
+			break;
+		case 0:
+			InHandcash = InHandcash - BET_AMOUNT;
+			System.out.println("Total current cash gambler has " + InHandcash);
+			break;
+		default:
+			System.out.println("default");
+		}
+		if (play == 1) {
+			System.out.println("Player had won the first play");
+		} else {
+			System.out.println("Player had lost the first play");
+			sc.close();
+		}
 
-		            public static void main (String[]args){
-		                System.out.println("welcome to gambler simulator problem");
-		            }
-		        }
-		    
-		
+	}
+
+}
 
 	
 
