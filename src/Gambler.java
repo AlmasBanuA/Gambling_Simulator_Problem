@@ -1,61 +1,47 @@
-package workshop;
+package daygambler;
 
-public class Gambler {
-	
-	//UC1
-    public static final int INITIAL_BET_STAKE = 100;   	//use static final is that its an integer that is  constant for all instances of certain class at all time
-    public static final int BET_AMT = 1;
-    
-    //UC2
-    public void gambler_SolutionUC2(){ 		// calling mathod
-  
-	    /*
-	    * taking random function to check get either win or loose
-	    */
-    	double num =  Math.floor(Math.random() *10) % 2;
-        int remg_amt = INITIAL_BET_STAKE;
-        if (num==0){
-            remg_amt += BET_AMT;
-            System.out.println("The Gambler wins the bet and he has $"
-            +remg_amt+ " with him after one bet.");
-        }else {
-            remg_amt -= BET_AMT;
-            System.out.println("The Gambler loses the bet and he has $"
-            +remg_amt+ " with him after one bet.");
-        } 
-    }
-    
-    /*
-    Use case 3 to check either gambler win or loose the game 50% of the stake
-    */
-    public void gambler_SolutionUC3(int margin_perct){
-        double uppr_margin = INITIAL_BET_STAKE + margin_perct*INITIAL_BET_STAKE/100;
-        double lowr_margin = INITIAL_BET_STAKE - margin_perct*INITIAL_BET_STAKE/100;
-        double avail_amt = INITIAL_BET_STAKE;
-	    
-	    
-        while ((avail_amt<uppr_margin) && (avail_amt>lowr_margin)){ 		// create while loop to check to check condtion upper and  lower margin
-        	
-        	double num1 =  Math.floor(Math.random() *10) % 2;
-        	
-            if (num1==0){
-                avail_amt += BET_AMT;
-            }else {
-                avail_amt -= BET_AMT;
-            }
-        }
-        System.out.println("The gambler resigns for the day after he has $"
-        + avail_amt + " with him.");
-    }
-    
+import java.util.Scanner;
+
+public class GamblerSimulatorUC3 {
+
+	static int AMOUNT_OF_STAKE = 100;
+	static int BET_AMOUNT = 1;
+	static int WON = 1;
+	static int LOST = 0;
+
 	public static void main(String[] args) {
-		System.out.println("welcome to gambler simulator problem");
-		Gambler game = new Gambler();
-	
-		//game.gambler_SolutionUC2();
-		game.gambler_SolutionUC3(50);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Starting amount of stake is " + AMOUNT_OF_STAKE);
+		System.out.println("Amount to bet after every play " + BET_AMOUNT);
+		int InHandcash = AMOUNT_OF_STAKE;
+		while (InHandcash > 50 && InHandcash < 150) {
+			int play = (int) Math.floor(Math.random() * 10) % 2;
+			System.out.println("Gamblers play:" + play);
+
+			switch (play) {
+			case 1:
+				InHandcash = InHandcash + BET_AMOUNT;
+				System.out.println("Total current cash gambler has " + InHandcash);
+				break;
+			case 0:
+				InHandcash = InHandcash - BET_AMOUNT;
+				System.out.println("Total current cash gambler has " + InHandcash);
+				break;
+			default:
+				System.out.println("default");
+			}
+			if (play == 1) {
+				System.out.println("Player won the current play");
+			} else {
+				System.out.println("Player lost the current play");
+			}
+
+		}
+		if (InHandcash == 150 || InHandcash == 50) {
+			System.out.println("Player will resign for current day");
+			sc.close();
+
+		}
 	}
 
 }
-
-	
