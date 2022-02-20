@@ -1,20 +1,21 @@
-package workshop;
+package daygambler;
 
-public class Gambler{
-	
-	/*
-	* UC1 here taking variables and initializing it in the int data type
-	*/
-	 
-    public static final int INITIAL_BET_STAKE = 100;
-    public static final int BET_AMT = 1;
-    
-    public static void main(String[] args) {
-	    
-	    /*
-	    * printing welcome message
-	    */
-    System.out.println("welcome to gambler problem");
-		
-    }
+import java.util.Scanner;
+
+public class GamblingSimulatorUC1 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter amount of stake :");
+		int amount = sc.nextInt();
+		System.out.println("Enter amount to bet after every play :");
+		int bet = sc.nextInt();
+		System.out.println("Amount of stake is " + amount);
+		System.out.println("Amount to bet after every game " + bet);
+		sc.close();
+
+	}
+
 }
+
