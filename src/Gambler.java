@@ -3,7 +3,7 @@ package daygambler;
 
 import java.util.Scanner;
 
-public class GamblerSimulatorUC7 {
+public class Gambler {
 
 	static int TOTAL_AMOUNT_DIFF_IN_MONTH = 0;
 	static int WON = 1;
