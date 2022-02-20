@@ -2,7 +2,7 @@ package daygambler;
 
 import java.util.Scanner;
 
-public class GamblingSimulatorUC1 {
+public class Gambler {
 
 	public static void main(String[] args) {
 
