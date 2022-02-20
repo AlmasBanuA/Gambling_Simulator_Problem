@@ -2,7 +2,7 @@ package daygambler;
 
 import java.util.Scanner;
 
-public class GamblerSimulatorUC5 {
+public class Gambler {
 
 	static int AMOUNT_OF_STAKE = 100;
 	static int TOTAL_AMOUNT_DIFF_IN_MONTH = 0;
