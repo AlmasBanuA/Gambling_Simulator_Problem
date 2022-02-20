@@ -2,7 +2,7 @@ package daygambler;
 
 import java.util.*;
 
-public class GamblerSimulatorUC4 {
+public class Gambler {
 
 	static int AMOUNT_OF_STAKE = 100;
 	static int BET_AMOUNT = 1;
